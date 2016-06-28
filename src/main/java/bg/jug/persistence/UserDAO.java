@@ -3,8 +3,7 @@ package bg.jug.persistence;
 import bg.jug.domain.User;
 
 import javax.ejb.Stateless;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -12,6 +11,9 @@ import java.util.List;
  */
 @Stateless
 public class UserDAO extends AbstractDAO{
+
+    @PersistenceContext(unitName = "ems")
+    protected EntityManager em;
 
     public User getUserById(long id){
         return em.find(User.class,id);

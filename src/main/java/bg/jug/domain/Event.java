@@ -21,6 +21,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+@NamedQueries({
+        @NamedQuery(name="EventDAO.getAllEvents",
+                query="SELECT e FROM Event e")
+})
 public class Event implements Serializable {
 
     @Id
@@ -30,6 +34,7 @@ public class Event implements Serializable {
 
     @Column
     @XmlElement(required=true)
+    @Temporal(TemporalType.DATE)
     private Date eventTime;
 
     @Column
