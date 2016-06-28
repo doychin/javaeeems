@@ -2,6 +2,7 @@ package bg.jug.persistence;
 
 import bg.jug.domain.Attendee;
 import bg.jug.domain.Event;
+import bg.jug.domain.Organizer;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
@@ -28,5 +29,11 @@ public class EventDAO extends AbstractDAO {
     public List<Event> getAllEvents(){
         return em.createNamedQuery("EventDAO.getAllEvents",Event.class).getResultList();
     }
-
+    
+    public Event createEvent(long organizerId, Event event) {
+    	Organizer organizer = em.find(Organizer.class, organizerId);
+    	event.setOrganizer(organizer);
+    	em.persist(event);
+    	return event;
+    }
 }

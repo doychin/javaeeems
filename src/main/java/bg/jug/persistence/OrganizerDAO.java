@@ -1,13 +1,12 @@
 package bg.jug.persistence;
 
-import bg.jug.domain.Organizer;
+import java.util.List;
 
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
-import java.util.List;
+
+import bg.jug.domain.Organizer;
 
 /**
  * Created by Dmitry Alexandrov on 28.06.16.
@@ -27,4 +26,10 @@ public class OrganizerDAO extends AbstractDAO{
         return em.createNamedQuery("EventDAO.getAllOrganizers",Organizer.class).getResultList();
     }
 
+    public Organizer createOrganizer(Organizer organizer){
+    	em.persist(organizer);
+    	em.flush();
+    	return organizer;
+    }
+    
 }

@@ -75,4 +75,12 @@ public class Event implements Serializable {
     public void setAttendees(Collection<Attendee> attendees) {
         this.attendees = attendees;
     }
+    
+    public Organizer getOrganizer() {
+		return organizer;
+	}
+    
+    public void setOrganizer(Organizer organizer) {
+		this.organizer = organizer;
+	}
 }
