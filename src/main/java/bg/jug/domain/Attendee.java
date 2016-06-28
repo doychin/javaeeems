@@ -1,14 +1,17 @@
 package bg.jug.domain;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.List;
 
 /**
  * Created by Dmitry Alexandrov on 28.06.16.
  */
 @Entity
+@XmlRootElement
 public class Attendee {
-
+	
     @Id
     @GeneratedValue
     private long id;

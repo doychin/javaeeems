@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ import java.util.Date;
  * Created by doychin on 28.6.2016 г..
  */
 @Entity
+@XmlRootElement
 public class Event implements Serializable {
 
     @Id
