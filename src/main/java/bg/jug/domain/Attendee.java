@@ -1,9 +1,7 @@
 package bg.jug.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Dmitry Alexandrov on 28.06.16.
@@ -24,6 +22,8 @@ public class Attendee {
     @Column
     private String email;
 
+    @ManyToMany
+    private List<Event> events;
 
 
     public long getId() {
@@ -56,5 +56,13 @@ public class Attendee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
