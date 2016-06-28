@@ -1,9 +1,12 @@
 package bg.jug.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Organizer {
@@ -16,6 +19,8 @@ public class Organizer {
 
 	private String lastName;
 
+	private List<Event> events;
+	
 	@Column
 	@Id
 	@GeneratedValue
@@ -54,4 +59,12 @@ public class Organizer {
 		this.lastName = lastName;
 	}
 
+	@OneToMany(mappedBy = "organizer")
+	public List<Event> getEvents() {
+		return events;
+	}
+	
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 }
