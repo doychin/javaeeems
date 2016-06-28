@@ -10,5 +10,7 @@ import javax.persistence.PersistenceUnit;
  */
 public class AbstractDAO {
 
+    @PersistenceContext(unitName = "ems")
+    protected EntityManager em;
 
 }

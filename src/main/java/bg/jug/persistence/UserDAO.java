@@ -12,8 +12,6 @@ import java.util.List;
 @Stateless
 public class UserDAO extends AbstractDAO{
 
-    @PersistenceContext(unitName = "ems")
-    protected EntityManager em;
 
     public User getUserById(long id){
         return em.find(User.class,id);

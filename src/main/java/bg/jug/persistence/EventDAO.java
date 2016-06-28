@@ -15,8 +15,6 @@ import java.util.List;
 
 public class EventDAO extends AbstractDAO {
 
-    @PersistenceContext(unitName = "ems")
-    protected EntityManager em;
 
     public Event getEventById(long id){
         return em.find(Event.class,id);
