@@ -7,25 +7,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Organizer {
 
-	private long id;
-
-	private String company;
-
-	private String firstName;
-
-	private String lastName;
-
-	private List<Event> events;
-	
 	@Column
 	@Id
 	@GeneratedValue
+    @XmlElement
+	private long id;
+	
+	@Column
+    @XmlElement(required=true)
+	private String company;
+
+	@Column
+    @XmlElement(required=true)
+	private String firstName;
+
+	@Column
+    @XmlElement(required=true)
+	private String lastName;
+
+	@OneToMany(mappedBy = "organizer")
+    @XmlElement
+	private List<Event> events;
+	
 	public long getId() {
 		return id;
 	}
@@ -34,7 +47,6 @@ public class Organizer {
 		this.id = id;
 	}
 
-	@Column
 	public String getCompany() {
 		return company;
 	}
@@ -43,7 +55,6 @@ public class Organizer {
 		this.company = company;
 	}
 
-	@Column
 	public String getFirstName() {
 		return firstName;
 	}
@@ -52,7 +63,6 @@ public class Organizer {
 		this.firstName = firstName;
 	}
 
-	@Column
 	public String getLastName() {
 		return lastName;
 	}
@@ -61,7 +71,6 @@ public class Organizer {
 		this.lastName = lastName;
 	}
 
-	@OneToMany(mappedBy = "organizer")
 	public List<Event> getEvents() {
 		return events;
 	}
