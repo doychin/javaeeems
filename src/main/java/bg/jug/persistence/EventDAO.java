@@ -1,14 +1,10 @@
 package bg.jug.persistence;
 
-import bg.jug.domain.Attendee;
 import bg.jug.domain.Event;
-import bg.jug.domain.Organizer;
 
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**

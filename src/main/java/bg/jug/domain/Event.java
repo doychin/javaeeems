@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,10 +37,13 @@ public class Event implements Serializable {
     private String name;
 
     @ManyToMany
-    private Collection<Attendee> attendees;
+    private Collection<User> attendees;
 
     @ManyToOne
-    private Organizer organizer;
+    private User organizer;
+
+    @OneToMany(mappedBy = "event")
+    private List<Talk> talks;
 
     public Event() {
     }
@@ -68,19 +72,21 @@ public class Event implements Serializable {
         this.name = name;
     }
 
-    public Collection<Attendee> getAttendees() {
+    public Collection<User> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(Collection<Attendee> attendees) {
+    public void setAttendees(Collection<User> attendees) {
         this.attendees = attendees;
     }
     
-    public Organizer getOrganizer() {
+    public User getOrganizer() {
 		return organizer;
 	}
     
-    public void setOrganizer(Organizer organizer) {
+    public void setOrganizer(User organizer) {
 		this.organizer = organizer;
 	}
+
+
 }

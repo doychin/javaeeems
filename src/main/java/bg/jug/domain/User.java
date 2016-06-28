@@ -1,12 +1,6 @@
 package bg.jug.domain;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,28 +12,30 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Attendee {
-	
+@NamedQueries({
+        @NamedQuery(name="UserDAO.getAllUsers",
+                query="SELECT a FROM User a")
+})
+public class User {
+
     @Id
     @GeneratedValue
     @XmlElement
     private long id;
-    
+
     @Column
-    @XmlElement(required=true)
+    @XmlElement(required = true)
     private String firstName;
 
     @Column
-    @XmlElement(required=true)
+    @XmlElement(required = true)
     private String lastName;
 
     @Column
-    @XmlElement(required=true)
+    @XmlElement(required = true)
     private String email;
 
-    @ManyToMany
-    @XmlElement
-    private List<Event> events;
+    private UserType type;
 
     public long getId() {
         return id;
@@ -73,11 +69,11 @@ public class Attendee {
         this.email = email;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    public UserType getType() {
+        return type;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setType(UserType type) {
+        this.type = type;
     }
 }
