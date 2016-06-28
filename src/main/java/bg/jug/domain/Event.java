@@ -1,10 +1,8 @@
 package bg.jug.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -22,6 +20,12 @@ public class Event implements Serializable {
 
     @Column
     private String name;
+
+    @ManyToMany
+    private Collection<Attendee> attendees;
+
+    @ManyToOne
+    private Organizer organizer;
 
     public Event() {
     }
@@ -48,5 +52,13 @@ public class Event implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Collection<Attendee> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(Collection<Attendee> attendees) {
+        this.attendees = attendees;
     }
 }
